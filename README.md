@@ -88,6 +88,22 @@ For manual deployment:
    - `DATABASE_URL`: Your database connection string.
    - `JWT_SECRET`: Your secret key.
 
+### Railway
+
+This project includes a `railway.json` for easy deployment on Railway.
+
+1. **Connect Repository**: Go to [Railway.app](https://railway.app/), create a new project, and select "Deploy from GitHub repo".
+2. **Add Database**: Add a PostgreSQL database service to your project.
+3. **Configure Environment Variables**:
+   - `DATABASE_URL`: Set this to the connection string provided by the PostgreSQL service.
+   - `JWT_SECRET`: Your secret key.
+   - `PORT`: Railway automatically injects this (defaults to 3000 inside container).
+4. **Deploy**: Railway will automatically detect the `Dockerfile` and build/deploy your application.
+
+**Important**: 
+- Ensure you update your `prisma/schema.prisma` provider to `postgresql` if you are using the Railway Postgres plugin.
+- If you keep using SQLite, your data will be lost on every restart unless you mount a volume. It is highly recommended to use PostgreSQL for production.
+
 ## Resources
 
 Check out a few resources that may come in handy when working with NestJS:
